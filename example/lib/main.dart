@@ -22,6 +22,7 @@ class MyApp extends StatelessWidget {
     pr.style(
       message: 'Downloading file...',
       borderRadius: 10.0,
+      width: 300,
       backgroundColor: Colors.white,
       elevation: 10.0,
       insetAnimCurve: Curves.easeInOut,
@@ -110,7 +111,7 @@ class _FirstScreenState extends State<FirstScreen> {
   @override
   Widget build(BuildContext context) {
     pr = new ProgressDialog(context, showLogs: true);
-    pr.style(message: 'Please wait...');
+    pr.style(message: 'Please wait...', width: 300.0);
 
     return Scaffold(
       body: Center(

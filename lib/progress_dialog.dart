@@ -5,6 +5,7 @@ enum ProgressDialogType { Normal, Download }
 
 String _dialogMessage = "Loading...";
 double _progress = 0.0, _maxProgress = 100.0;
+double _width;
 
 bool _isShowing = false;
 BuildContext _context, _dismissingContext;
@@ -46,6 +47,7 @@ class ProgressDialog {
       TextStyle messageTextStyle,
       double elevation,
       double borderRadius,
+      double width,
       Curve insetAnimCurve}) {
     if (_isShowing) return;
     if (_progressDialogType == ProgressDialogType.Download) {
@@ -61,6 +63,9 @@ class ProgressDialog {
     _dialogElevation = elevation ?? _dialogElevation;
     _borderRadius = borderRadius ?? _borderRadius;
     _insetAnimCurve = insetAnimCurve ?? _insetAnimCurve;
+    _width = width ?? _width;
+
+    print("---width: $_width");
   }
 
   void update(
@@ -181,8 +186,11 @@ class _BodyState extends State<_Body> {
 
   @override
   Widget build(BuildContext context) {
+    print("width: $_width");
+
     return SizedBox(
       height: 100.0,
+      width: _width,
       child: Row(children: <Widget>[
         const SizedBox(width: 10.0),
         SizedBox(
